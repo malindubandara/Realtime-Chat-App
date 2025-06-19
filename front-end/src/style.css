@@ -1,3 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family:poppins, sans-serif;
+  font-weight: 300;
+  background-color: #f0f0f0;
+}
+
+/* Login */
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -37,4 +47,99 @@
   background-color: #139655;
   color: white;
   cursor: pointer;
+  transition: 0.3s;
+}
+.login-form button:hover {
+  background-color: #117a4a;
+}
+
+/* Chat Container */
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #139655;
+  color: white;
+}
+.chat-logout {
+  color: white;
+  cursor: pointer;
+}
+.chat-logout:hover {
+  text-decoration: underline;
+  color: #cccccc;
+}
+
+/* Chat Lists */
+
+.sender-chat{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  
+}
+.sender-chat img,
+.receiver-chat img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+.sender-chat p {
+  background-color: #139655;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 60%;
+  margin-right: 10px;
+}
+.receiver-chat{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.receiver-chat p {
+  background-color: #000502;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 60%;
+}
+
+/* input Text */
+
+.input-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+  background-color: #ffffff;
+  border-top: 1px solid #ccc;
+}
+.input-text button {
+  padding: 10px;
+  border: none;
+  height: 50px;
+  width: 100px;
+  border-radius: 4px;
+  background-color: #139655;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 18px;
+}
+.input-text button:hover {
+  background-color: #117a4a;
+}
+
+.input-text textarea {
+  width: 60%;
+  height: 50px;
+  border-radius: 4px;
+  border-width: 1;
+  padding: 10px;
+  font-size: 18px;
 }
