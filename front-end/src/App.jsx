@@ -1,13 +1,12 @@
-import UserLogin from "./components/UserLogin"
-import ChatContainer from "./components/ChatContainer"
+import UserLogin from "./components/UserLogin";
+import ChatContainer from "./components/ChatContainer";
 
 function App() {
-
   return (
     <>
-    <ChatContainer/>
+      <ChatContainer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
