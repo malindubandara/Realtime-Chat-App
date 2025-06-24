@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaReact } from "react-icons/fa6";
 import "../style.css";
+import _ from "lodash";
 
 const UserLogin = ({ setUser }) => {
   const [userName, setUserName] = useState();
@@ -9,8 +10,8 @@ const UserLogin = ({ setUser }) => {
     localStorage.setItem("user", userName);
     setUser(userName);
     localStorage.setItem(
-      "avatarImage",
-      `https://api.dicebear.com/5.x/initials/svg?seed=${userName}`
+      "avatar",
+      `https://picsum.photos/id/${_.random(1, 1000)}/200/300`
     );
   };
   return (

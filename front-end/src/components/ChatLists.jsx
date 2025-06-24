@@ -1,36 +1,58 @@
-import React from 'react'
-import '../style.css'
+import React from "react";
+import "../style.css";
 
-const ChatLists = () => {
+const ChatLists = ({ chats }) => {
+  const user = localStorage.getItem("user");
+  function SenderChat({ message, username, avatar }) {
+    return (
+      <div className="sender-chat">
+        <img src={avatar} alt="" />
+        <p>
+          <strong>{username}</strong>
+          <br />
+          {message}
+        </p>
+      </div>
+    );
+  }
 
-    function SenderChat(){
-        return(
-            <div className='sender-chat'>
-                <img src="https://picsum.photos/id/237/200/300" alt="" />
-                <p>
-                    <strong>Banda</strong><br />
-                    message from sender
-                </p>
-            </div> 
-        )
-    }
-    function ReceiverChat(){
-        return(
-            <div className='receiver-chat'>
-                <img src="https://picsum.photos/id/237/200/300" alt="" />
-                <p>
-                    <strong>Naruto</strong><br />
-                    message from receiver
-                </p>
-            </div>
-        )
-    }
+  function ReceiverChat({ message, username, avatar }) {
+    return (
+      <div className="receiver-chat">
+        <img src={avatar} alt="" />
+        <p>
+          <strong>{username}</strong>
+          <br />
+          {message}
+        </p>
+      </div>
+    );
+  }
   return (
-    <div>
-        <SenderChat />
-        <ReceiverChat />
+    <div className="chat-lists">
+      {chats.map((chat, index) => {
+        if (chat.username === user) {
+          return (
+            <SenderChat
+              key={index}
+              message={chat.message}
+              username={chat.username}
+              avatar={chat.avatar}
+            />
+          );
+        } else {
+          return (
+            <ReceiverChat
+              key={index}
+              message={chat.message}
+              username={chat.username}
+              avatar={chat.avatar}
+            />
+          );
+        }
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default ChatLists
+export default ChatLists;
