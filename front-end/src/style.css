@@ -3,7 +3,7 @@ body {
   padding: 0;
   font-family:poppins, sans-serif;
   font-weight: 300;
-  background-color: #f0f0f0;
+  background-color: #292929;
 }
 
 /* Login */
@@ -124,7 +124,7 @@ body {
   align-items: center;
   justify-content: space-evenly;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: #3a3a3a;
   border-top: 1px solid #ccc;
 }
 .input-text button {

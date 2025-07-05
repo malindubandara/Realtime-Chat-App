@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../style.css";
+import { useRef } from "react";
 
 const ChatLists = ({ chats }) => {
+  const endOFMessages = useRef();
   const user = localStorage.getItem("user");
   function SenderChat({ message, username, avatar }) {
     return (
@@ -28,6 +30,14 @@ const ChatLists = ({ chats }) => {
       </div>
     );
   }
+  useEffect(() => {
+    scrollToBottom();
+  }, [chats]);
+
+  const scrollToBottom = () => {
+    endOFMessages.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="chat-lists">
       {chats.map((chat, index) => {
@@ -51,6 +61,7 @@ const ChatLists = ({ chats }) => {
           );
         }
       })}
+      <div ref={endOFMessages} />
     </div>
   );
 };

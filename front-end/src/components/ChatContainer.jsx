@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ChatLists from "./ChatLists";
 import InputText from "./InputText";
 import UserLogin from "./UserLogin";
 import socketIOClient from "socket.io-client";
-import { useEffect } from "react";
 // import '../style.css'
 
 const ChatContainer = () => {
@@ -15,21 +14,24 @@ const ChatContainer = () => {
     socketio.on("chat", (chats) => {
       setChats(chats);
     });
-  });
+    //HERE
+    socketio.on("message", (msg) => {
+      setChats((prevChats) => [...prevChats, msg]);
+    });
 
-  const sendToSocket = (chat) => {
-    socketio.emit("chat", chat);
-  };
+    return () => {
+      socketio.off("chat");
+      socketio.off("message");
+    };
+  }, []);
 
   const addMessage = (chat) => {
     const newChat = {
-      ...chats,
       username: localStorage.getItem("user"),
       avatar: localStorage.getItem("avatar"),
       message: chat,
     };
-    setChats([...chats, newChat]);
-    sendToSocket([...chats, newChat]);
+    socketio.emit("newMessage", newChat);
   };
 
   const Logout = () => {
